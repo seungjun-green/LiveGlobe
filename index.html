@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Map</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <link rel="stylesheet" type="text/css" href="./style.css" />
+    <script type="module" src="script.js"></script>
+
+</head>
+
+<body>
+
+<h3>My Google Maps Demo</h3>
+
+<div id="overlay" onclick="off()">
+    <div id="text">SEX</div>
+</div>
+<!--The div element for the map -->
+<div id="map">
+
+
+</div>
+
+<p id="result1">Hello, World</p>
+<p id="result2">Hello, World</p>
+<p id="weather">Default weather</p>
+<button onclick="on()">Turn on overlay effect</button>
+<button onclick="off()">Turn off overlay effect</button>
+
+
+<p id="03_foot">sexvds</p>
+
+
+<script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBtrKR4CCcLoUVr2pR--xDKtaB6tvAYHK4&callback=initMap&v=weekly"
+        defer
+></script>
+
+
+<script>
+    function on() {
+        document.getElementById("overlay").style.display = "block";
+    }
+
+    function off() {
+        document.getElementById("overlay").style.display = "none";
+    }
+</script>
+
+
+</body>
+</html>
