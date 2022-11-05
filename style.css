@@ -15,17 +15,24 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(221, 212, 212, 0.942);
+    background-color: rgba(221, 212, 212, 0);
     z-index: 2;
     cursor: pointer;
+    pointer-events: none;
 }
 
-#text{
+
+
+
+.dot {
+    pointer-events: none;
     position: absolute;
     top: 50%;
     left: 50%;
-    font-size: 50px;
-    color: white;
-    transform: translate(-50%,-50%);
-    -ms-transform: translate(-50%,-50%);
+    height: 25px;
+    width: 25px;
+    background-color: rgba(225, 0, 0, 1);
+    border-radius: 50%;
+    display: inline-block;
+    z-index: 3;
 }
