@@ -9,8 +9,8 @@ function initMap() {
 
 
     updateWeather(map);
-}
 
+}
 
 function updateWeather(map) {
     map.addListener("center_changed", () => {
@@ -23,10 +23,11 @@ function updateWeather(map) {
 
         //pass current lat/lng to wetaher api and get weather data
         var testing = true;
+        var weather;
         if (testing) {
             // randomly selects weather from ana array
-            var weather = ["sunny", "cloudy", "rainy", "snowy"];
-            var weather = weather[Math.floor(Math.random() * weather.length)];
+            var weathers = ["sunny", "cloudy", "rainy", "snowy"];
+            var weather = weathers[Math.floor(Math.random() * weathers.length)];
         } else {
             // get weather data from api
             var weather = "sunny";
@@ -34,7 +35,6 @@ function updateWeather(map) {
 
         document.getElementById("weather").innerHTML = weather;
         updateWeatherAnimation()
-
     });
 }
 
@@ -45,7 +45,10 @@ function updateWeatherAnimation() {
     let c = Math.floor(Math.random() * 250);
 
     document.querySelector(".dot").style.backgroundColor = "rgba(" + Math.random() * 255 + ", 225, 0, 1)";
-
-
 }
+
+
+
+
+
 window.initMap = initMap;

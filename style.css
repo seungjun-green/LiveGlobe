@@ -21,9 +21,6 @@
     pointer-events: none;
 }
 
-
-
-
 .dot {
     pointer-events: none;
     position: absolute;
@@ -112,3 +109,32 @@
 .cloudy-half {
     display: none;
 }
+
+.rainy {
+    display: block;
+}
+
+.drop {
+    position: absolute;
+    bottom: 100%;
+    width: 7px;
+    height: 50px;
+    pointer-events: none;
+    background-color: blue;
+    border-radius: 50%;
+    animation: drop 0.7s linear infinite;
+    z-index: 3;
+}
+
+@keyframes drop {
+    0% {
+        transform: translateY(0vh);
+    }
+    75% {
+        transform: translateY(300px);
+    }
+    100% {
+        transform: translateY(390px);
+    }
+}
+

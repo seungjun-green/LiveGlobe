@@ -5,11 +5,12 @@
         <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
         <link rel="stylesheet" type="text/css" href="./style.css"/>
         <script type="module" src="script.js"></script>
+        <script type="module" src="rain.js"></script>
     </head>
 
     <body>
 
-        <h3>Live Gloe</h3>
+        <h3>Live Globe</h3>
 
         <div id="overlay">
             <span class="dot"></span>
@@ -17,12 +18,24 @@
             <!-- sunny -->
             <div class="sunny"></div>
 
-            <!-- cloudy -->
+            <!-- cloudy-half -->
             <div class="cloudy-half">
                 <div class="cloud one"></div>
                 <div class="cloud two"></div>
                 <div class="cloud three"></div>
             </div>
+
+            <!-- cloudy-full -->
+
+            <!-- rainy -->
+            <div class="rainy">
+                <div class="drop"></div>
+            </div>
+
+            <!-- stormy -->
+
+
+            <!-- foggy -->
 
 
         </div>
@@ -34,7 +47,8 @@
         <p id="weather">Default weather</p>
 
         <button onclick="sunny()">Sunny weather</button>
-        <button onclick="cloudy()">ckoudy weather</button>
+        <button onclick="cloudy()">cloudy weather</button>
+        <button onclick="rainy()">rainy weather</button>
 
 
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBtrKR4CCcLoUVr2pR--xDKtaB6tvAYHK4&callback=initMap&v=weekly"
@@ -57,6 +71,15 @@
                     document.getElementsByClassName("cloudy-half")[0].style.display = "none"
                 } else {
                     document.getElementsByClassName("cloudy-half")[0].style.display = "block"
+                }
+            }
+
+            function rainy() {
+                let curr = document.getElementsByClassName("rainy")[0].style.display;
+                if (curr === "block") {
+                    document.getElementsByClassName("rainy")[0].style.display = "none"
+                } else {
+                    document.getElementsByClassName("rainy")[0].style.display = "block"
                 }
             }
         </script>
