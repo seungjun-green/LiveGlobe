@@ -114,19 +114,16 @@
     display: block;
 }
 
-.drop {
+i {
     position: absolute;
-    bottom: 100%;
-    width: 7px;
-    height: 50px;
-    pointer-events: none;
-    background-color: blue;
-    border-radius: 50%;
-    animation: drop 0.7s linear infinite;
-    z-index: 3;
+    height: 200px;
+    background: linear-gradient(transparent, cornflowerblue);
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    animation: animate 5s linear infinite;
 }
 
-@keyframes drop {
+@keyframes animate {
     0% {
         transform: translateY(0vh);
     }
@@ -137,4 +134,3 @@
         transform: translateY(390px);
     }
 }
-

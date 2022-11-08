@@ -5,7 +5,6 @@
         <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
         <link rel="stylesheet" type="text/css" href="./style.css"/>
         <script type="module" src="script.js"></script>
-        <script type="module" src="rain.js"></script>
     </head>
 
     <body>
@@ -28,10 +27,9 @@
             <!-- cloudy-full -->
 
             <!-- rainy -->
-            <div class="rainy">
-                <div class="drop"></div>
-            </div>
+            <div class="rainyW">
 
+            </div>
             <!-- stormy -->
 
 
@@ -56,6 +54,37 @@
 
 
         <script>
+            function rain() {
+
+                let amount = 100;
+                let body = document.querySelector('.rainyW')
+                let i = 0;
+
+                while (i<amount) {
+                    let drop = document.createElement('i');
+
+                    let size = Math.random() * 5;
+                    let posX = Math.floor(Math.random() * window.innerWidth);
+                    let delay = Math.random() * -20;
+                    let duration = Math.random() * 5;
+
+                    drop.style.width = 0.2 + size+'px';
+
+                    drop.style.left = posX + 'px';
+
+                    drop.style.animationDelay = duration+'s';
+                    drop.style.animationDuration = 1 + duration+'s';
+                    body.appendChild(drop);
+                    i++;
+
+                }
+
+
+
+
+            }
+
+
             function sunny() {
                 let curr = document.getElementsByClassName("sunny")[0].style.display;
                 if (curr === "block") {
@@ -75,12 +104,14 @@
             }
 
             function rainy() {
-                let curr = document.getElementsByClassName("rainy")[0].style.display;
-                if (curr === "block") {
-                    document.getElementsByClassName("rainy")[0].style.display = "none"
-                } else {
-                    document.getElementsByClassName("rainy")[0].style.display = "block"
-                }
+                // let curr = document.getElementsByClassName("rainy")[0].style.display;
+                // if (curr === "block") {
+                //     document.getElementsByClassName("rainy")[0].style.display = "none"
+                // } else {
+                //     document.getElementsByClassName("rainy")[0].style.display = "block"
+                // }
+
+                rain()
             }
         </script>
     </body>
