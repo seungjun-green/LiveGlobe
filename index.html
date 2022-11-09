@@ -29,11 +29,7 @@
             <div class="rainyW"></div>
 
             <!-- stormy -->
-            <div class="thunderbolt">
-                <div class="shape1"></div>
-                <div class="shape2"></div>
-                <div class="shape3"></div>
-            </div>
+            <div class="lightning"></div>
 
             <!-- foggy -->
 
@@ -62,24 +58,25 @@
             function thunder() {
 
                 let amount = 5;
-                let body = document.querySelector('.rainyW')
+                let body = document.querySelector('.lightning')
                 let i = 0;
 
                 while (i<amount) {
-                    let drop = document.createElement('i');
+
+                    let thunder = document.createElement('thunderbolt');
 
                     let size = Math.random() * 5;
                     let posX = Math.floor(Math.random() * window.innerWidth);
                     let delay = Math.random() * -20;
                     let duration = Math.random() * 5;
 
-                    drop.style.width = 0.2 + size+'px';
+                    thunder.style.width = 0.2 + size+'px';
 
-                    drop.style.left = posX + 'px';
+                    thunder.style.left = posX + 'px';
 
-                    drop.style.animationDelay = duration+'s';
-                    drop.style.animationDuration = 1 + duration+'s';
-                    body.appendChild(drop);
+                    thunder.style.animationDelay = duration+'s';
+                    thunder.style.animationDuration = 1 + duration+'s';
+                    body.appendChild(thunder);
                     i++;
 
                 }
