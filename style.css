@@ -134,3 +134,56 @@ i {
         transform: translateY(390px);
     }
 }
+
+.thunderbolt {
+    display: flex;
+}
+
+.thunderbolt .shape1
+{
+    position: relative;
+    width: 0;
+    height: 0;
+    border-bottom: 60px solid yellow;
+    border-left: 30px solid transparent;
+    transform: skewX(-25deg) translate(-50%, -50%);
+
+}
+
+
+.thunderbolt .shape1::before{
+    content: '';
+    position: absolute;
+    bottom: -110px;
+    right: -20px;
+    width: 0;
+    height: 0;
+    border-top: 60px solid yellow;
+    border-right: 30px solid transparent;
+}
+
+.thunderbolt .shape2 {
+    position: relative;
+    width: 25px;
+    height: 50px;
+    background: yellow;
+    transform: skewX(-30deg);
+}
+
+.thunderbolt .shape2::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    left: -20px;
+    border-bottom: 60px solid yellow;
+    border-left: 30px solid transparent;
+}
+
+.thunderbolt .shape2::after {
+    content: '';
+    position: absolute;
+    bottom: -50px;
+    right: -20px;
+    border-top: 60px solid yellow;
+    border-right: 30px solid transparent;
+}

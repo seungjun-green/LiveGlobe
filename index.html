@@ -24,14 +24,16 @@
                 <div class="cloud three"></div>
             </div>
 
-            <!-- cloudy-full -->
 
             <!-- rainy -->
-            <div class="rainyW">
+            <div class="rainyW"></div>
 
-            </div>
             <!-- stormy -->
-
+            <div class="thunderbolt">
+                <div class="shape1"></div>
+                <div class="shape2"></div>
+                <div class="shape3"></div>
+            </div>
 
             <!-- foggy -->
 
@@ -47,6 +49,8 @@
         <button onclick="sunny()">Sunny weather</button>
         <button onclick="cloudy()">cloudy weather</button>
         <button onclick="rainy()">rainy weather</button>
+        <button onclick="thunder()">lightning weather</button>
+
 
 
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBtrKR4CCcLoUVr2pR--xDKtaB6tvAYHK4&callback=initMap&v=weekly"
@@ -54,6 +58,33 @@
 
 
         <script>
+
+            function thunder() {
+
+                let amount = 5;
+                let body = document.querySelector('.rainyW')
+                let i = 0;
+
+                while (i<amount) {
+                    let drop = document.createElement('i');
+
+                    let size = Math.random() * 5;
+                    let posX = Math.floor(Math.random() * window.innerWidth);
+                    let delay = Math.random() * -20;
+                    let duration = Math.random() * 5;
+
+                    drop.style.width = 0.2 + size+'px';
+
+                    drop.style.left = posX + 'px';
+
+                    drop.style.animationDelay = duration+'s';
+                    drop.style.animationDuration = 1 + duration+'s';
+                    body.appendChild(drop);
+                    i++;
+
+                }
+            }
+
             function rain() {
 
                 let amount = 100;
@@ -78,10 +109,6 @@
                     i++;
 
                 }
-
-
-
-
             }
 
 
