@@ -26,7 +26,10 @@
 
 
             <!-- rainy -->
-            <div class="rainyW"></div>
+            <div class="rainyParent">
+                <div class="rainyW"></div>
+            </div>
+
 
             <!-- stormy -->
             <div class="lightning"></div>
@@ -84,31 +87,45 @@
 
                 }
             }
+            var rainAdded = false;
 
             function rain() {
 
-                let amount = 100;
-                let body = document.querySelector('.rainyW')
-                let i = 0;
+                if (rainAdded === false) {
+                    let amount = 100;
+                    let body = document.querySelector('.rainyW')
+                    let i = 0;
 
-                while (i<amount) {
-                    let drop = document.createElement('i');
+                    while (i<amount) {
+                        let drop = document.createElement('i');
 
-                    let size = Math.random() * 5;
-                    let posX = Math.floor(Math.random() * window.innerWidth);
-                    let delay = Math.random() * -20;
-                    let duration = Math.random() * 5;
+                        let size = Math.random() * 5;
+                        let posX = Math.floor(Math.random() * window.innerWidth);
+                        let delay = Math.random() * -20;
+                        let duration = Math.random() * 5;
 
-                    drop.style.width = 0.2 + size+'px';
+                        drop.style.width = 0.2 + size+'px';
 
-                    drop.style.left = posX + 'px';
+                        drop.style.left = posX + 'px';
 
-                    drop.style.animationDelay = duration+'s';
-                    drop.style.animationDuration = 1 + duration+'s';
-                    body.appendChild(drop);
-                    i++;
+                        drop.style.animationDelay = duration+'s';
+                        drop.style.animationDuration = 1 + duration+'s';
+                        body.appendChild(drop);
+                        i++;
+
+                    }
+
+                    rainAdded = true;
+                } else {
+                    rainAdded = false;
+                    var el = document.querySelector('.rainyW');
+                    while (el.firstChild) {
+                        el.removeChild(el.firstChild);
+                    }
 
                 }
+
+
             }
 
 
