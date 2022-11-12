@@ -11,7 +11,7 @@ function initMap() {
         document.getElementById('map'), {center: sydney, zoom: 15});
 
     var request = {
-        query: 'Museum of Contemporary Art Australia',
+        query: 'Seoul',
         fields: ['name', 'geometry'],
     };
 
