@@ -161,3 +161,15 @@ thunderbolt::after {
     border-top: 60px solid yellow;
     border-right: 30px solid transparent;
 }
+
+
+ #autocomplete {
+    background-color: #fff;
+    font-size: 15px;
+    font-weight: 300;
+    margin-left: 12px;
+    padding: 0 11px 0 13px;
+    text-overflow: ellipsis;
+    width: 500px;
+     display: inline-block;
+}

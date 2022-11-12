@@ -10,7 +10,7 @@ function initMap() {
     map = new google.maps.Map(document.getElementById("map"), {
         zoom: 11,
         center: {lat: 37.3347002970632, lng: -121.92762683892221},
-        mapTypeId: "satellite",
+        // mapTypeId: "satellite",
         disableDefaultUI: true,
         // scrollwheel: false,
         disableDoubleClickZoom: true
