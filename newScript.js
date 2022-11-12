@@ -2,29 +2,18 @@ var map;
 var service;
 var infowindow;
 
+
+
 function initMap() {
-    var sydney = new google.maps.LatLng(-33.867, 151.195);
-
-    infowindow = new google.maps.InfoWindow();
-
-    map = new google.maps.Map(
-        document.getElementById('map'), {center: sydney, zoom: 15});
-
-    var request = {
-        query: 'Seoul',
-        fields: ['name', 'geometry'],
-    };
-
-    var service = new google.maps.places.PlacesService(map);
-
-    service.findPlaceFromQuery(request, function(results, status) {
-        if (status === google.maps.places.PlacesServiceStatus.OK) {
-            for (var i = 0; i < results.length; i++) {
-                createMarker(results[i]);
-            }
-            map.setCenter(results[0].geometry.location);
-        }
+    initAutocomplete()
+    const map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 11,
+        center: { lat: 62.323907, lng: -150.109291 },
+        mapTypeId: "satellite",
     });
+
+    updateWeather(map);
+
 }
 
 
@@ -63,6 +52,37 @@ function updateWeatherAnimation() {
     document.querySelector(".dot").style.backgroundColor = "rgba(" + Math.random() * 255 + ", 225, 0, 1)";
 }
 
+let autocomplete;
+function initAutocomplete() {
+
+    const map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 11,
+        center: { lat: 62.323907, lng: -150.109291 },
+        mapTypeId: "satellite",
+    });
+
+
+    autocomplete = new google.maps.places.Autocomplete(
+        document.getElementById('autocomplete'),
+        {
+            types: ['establishment'],
+            componentRestrictions: {'country': ['US']},
+            fields: ['place_id', 'geometry', 'name']
+        }
+    )
+
+    autocomplete.addListener('place_changed', onPlaceChanged);
+}
+
+function onPlaceChanged() {
+    var place = autocomplete.getPlace();
+
+    if (!place.geometry) {
+        document.getElementById('autocomplete').placeholder = 'Enter a valid place';
+    } else {
+        document.getElementById('details').innerHTML = place.name;
+    }
+}
 
 
 
