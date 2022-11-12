@@ -93,10 +93,14 @@ function onPlaceChanged() {
         // var nnlng = coords.substring(coords.indexOf(",") + 1, coords.indexOf(")"));
         var ddr = JSON.stringify(place.geometry.location);
 
-        document.getElementById('result1').innerHTML = ddr;
+        // document.getElementById('result1').innerHTML = parseFloat(ddr.match('-?\\d+\\.\\d+')[0]);
+        // document.getElementById('result2').innerHTML = parseFloat(ddr.match('-?\\d+\\.\\d+')[1]);
+        var nnlat = parseFloat(ddr.match('-?\\d+\\.?\\d+')[0]);
+        ddr = ddr.replace(nnlat, '');
+        var nnlng = parseFloat(ddr.match('-?\\d+\\.?\\d+')[0]);
 
-        var nnlat = parseFloat(ddr.match(/\d+\.\d+/g)[0]);
-        var nnlng = parseFloat(ddr.match(/\d+\.\d+/g)[1]);
+        document.getElementById('result1').innerHTML = nnlat;
+        document.getElementById('result2').innerHTML = nnlng;
 
         map.setCenter({lat: nnlat, lng: nnlng});
 
