@@ -1,175 +1,177 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Add Map</title>
-        <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-        <link rel="stylesheet" type="text/css" href="./style.css"/>
-        <script type="module" src="script.js"></script>
-    </head>
+<head>
+    <title>Add Map</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <link rel="stylesheet" type="text/css" href="./style.css"/>
+    <script type="module" src="newScript.js"></script>
+</head>
 
-    <body>
+<body>
 
-        <h3>Live Globe</h3>
+<h3>Live Globe</h3>
 
-        <div id="overlay">
-            <span class="dot"></span>
+<div id="overlay">
+    <span class="dot"></span>
 
-            <!-- sunny -->
-            <div class="sunny"></div>
+    <!-- sunny -->
+    <div class="sunny"></div>
 
-            <!-- cloudy-half -->
-            <div class="cloudy-half">
-                <div class="cloud one"></div>
-                <div class="cloud two"></div>
-                <div class="cloud three"></div>
-            </div>
-
-
-            <!-- rainy -->
-            <div class="rainyParent">
-                <div class="rainyW"></div>
-            </div>
+    <!-- cloudy-half -->
+    <div class="cloudy-half">
+        <div class="cloud one"></div>
+        <div class="cloud two"></div>
+        <div class="cloud three"></div>
+    </div>
 
 
-            <!-- stormy -->
-            <div class="lightning"></div>
-
-            <!-- foggy -->
-
-
-        </div>
-
-        <div id="map"></div>
-
-        <p id="result1">Hello, World</p>
-        <p id="result2">Hello, World</p>
-        <p id="weather">Default weather</p>
-
-        <button onclick="sunny()">Sunny weather</button>
-        <button onclick="cloudy()">cloudy weather</button>
-        <button onclick="rainy()">rainy weather</button>
-        <button onclick="thunder()">lightning weather</button>
+    <!-- rainy -->
+    <div class="rainyParent">
+        <div class="rainyW"></div>
+    </div>
 
 
+    <!-- stormy -->
+    <div class="lightning"></div>
 
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBtrKR4CCcLoUVr2pR--xDKtaB6tvAYHK4&callback=initMap&v=weekly"
-                defer></script>
-
-
-        <script>
-
-            var thunderAdded = false;
-
-            function thunder() {
-                if (thunderAdded === false) {
-                    let amount = 5;
-                    let body = document.querySelector('.lightning')
-                    let i = 0;
-
-                    while (i<amount) {
-
-                        let thunder = document.createElement('thunderbolt');
-
-                        let size = Math.random() * 5;
-                        let posX = Math.floor(Math.random() * window.innerWidth);
-                        let posY = Math.floor(Math.random() * 400);
-                        let delay = Math.random() * -20;
-                        let duration = Math.random() * 5;
-
-                        thunder.style.width = 0.2 + size+'px';
-
-                        thunder.style.left = posX + 'px';
-                        thunder.style.top = posY + 'px';
+    <!-- foggy -->
 
 
-                        thunder.style.animationDelay = duration+'s';
-                        thunder.style.animationDuration = 1 + duration+'s';
-                        body.appendChild(thunder);
-                        i++;
+</div>
+
+<div id="map"></div>
+
+<p id="result1">Hello, World</p>
+<p id="result2">Hello, World</p>
+<p id="weather">Default weather</p>
+
+<button onclick="sunny()">Sunny weather</button>
+<button onclick="cloudy()">cloudy weather</button>
+<button onclick="rainy()">rainy weather</button>
+<button onclick="thunder()">lightning weather</button>
 
 
-                    }
 
-                    thunderAdded = true;
-                } else {
-                    thunderAdded = false;
-                    var el = document.querySelector('.lightning');
-                    while (el.firstChild) {
-                        el.removeChild(el.firstChild);
-                    }
-                }
+<script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBtrKR4CCcLoUVr2pR--xDKtaB6tvAYHK4&callback=initMap&libraries=places&v=weekly"
+        defer
+></script>
 
-            }
-            var rainAdded = false;
 
-            function rain() {
+<script>
 
-                if (rainAdded === false) {
-                    let amount = 100;
-                    let body = document.querySelector('.rainyW')
-                    let i = 0;
+    var thunderAdded = false;
 
-                    while (i<amount) {
-                        let drop = document.createElement('i');
+    function thunder() {
+        if (thunderAdded === false) {
+            let amount = 5;
+            let body = document.querySelector('.lightning')
+            let i = 0;
 
-                        let size = Math.random() * 5;
-                        let posX = Math.floor(Math.random() * window.innerWidth);
-                        let delay = Math.random() * -20;
-                        let duration = Math.random() * 5;
+            while (i<amount) {
 
-                        drop.style.width = 0.2 + size+'px';
+                let thunder = document.createElement('thunderbolt');
 
-                        drop.style.left = posX + 'px';
+                let size = Math.random() * 5;
+                let posX = Math.floor(Math.random() * window.innerWidth);
+                let posY = Math.floor(Math.random() * 400);
+                let delay = Math.random() * -20;
+                let duration = Math.random() * 5;
 
-                        drop.style.animationDelay = duration+'s';
-                        drop.style.animationDuration = 1 + duration+'s';
-                        body.appendChild(drop);
-                        i++;
+                thunder.style.width = 0.2 + size+'px';
 
-                    }
+                thunder.style.left = posX + 'px';
+                thunder.style.top = posY + 'px';
 
-                    rainAdded = true;
-                } else {
-                    rainAdded = false;
-                    var el = document.querySelector('.rainyW');
-                    while (el.firstChild) {
-                        el.removeChild(el.firstChild);
-                    }
 
-                }
+                thunder.style.animationDelay = duration+'s';
+                thunder.style.animationDuration = 1 + duration+'s';
+                body.appendChild(thunder);
+                i++;
 
 
             }
 
+            thunderAdded = true;
+        } else {
+            thunderAdded = false;
+            var el = document.querySelector('.lightning');
+            while (el.firstChild) {
+                el.removeChild(el.firstChild);
+            }
+        }
 
-            function sunny() {
-                let curr = document.getElementsByClassName("sunny")[0].style.display;
-                if (curr === "block") {
-                    document.getElementsByClassName("sunny")[0].style.display = "none"
-                } else {
-                    document.getElementsByClassName("sunny")[0].style.display = "block"
-                }
+    }
+    var rainAdded = false;
+
+    function rain() {
+
+        if (rainAdded === false) {
+            let amount = 100;
+            let body = document.querySelector('.rainyW')
+            let i = 0;
+
+            while (i<amount) {
+                let drop = document.createElement('i');
+
+                let size = Math.random() * 5;
+                let posX = Math.floor(Math.random() * window.innerWidth);
+                let delay = Math.random() * -20;
+                let duration = Math.random() * 5;
+
+                drop.style.width = 0.2 + size+'px';
+
+                drop.style.left = posX + 'px';
+
+                drop.style.animationDelay = duration+'s';
+                drop.style.animationDuration = 1 + duration+'s';
+                body.appendChild(drop);
+                i++;
+
             }
 
-            function cloudy() {
-                let curr = document.getElementsByClassName("cloudy-half")[0].style.display;
-                if (curr === "block") {
-                    document.getElementsByClassName("cloudy-half")[0].style.display = "none"
-                } else {
-                    document.getElementsByClassName("cloudy-half")[0].style.display = "block"
-                }
+            rainAdded = true;
+        } else {
+            rainAdded = false;
+            var el = document.querySelector('.rainyW');
+            while (el.firstChild) {
+                el.removeChild(el.firstChild);
             }
 
-            function rainy() {
-                // let curr = document.getElementsByClassName("rainy")[0].style.display;
-                // if (curr === "block") {
-                //     document.getElementsByClassName("rainy")[0].style.display = "none"
-                // } else {
-                //     document.getElementsByClassName("rainy")[0].style.display = "block"
-                // }
+        }
 
-                rain()
-            }
-        </script>
-    </body>
+
+    }
+
+
+    function sunny() {
+        let curr = document.getElementsByClassName("sunny")[0].style.display;
+        if (curr === "block") {
+            document.getElementsByClassName("sunny")[0].style.display = "none"
+        } else {
+            document.getElementsByClassName("sunny")[0].style.display = "block"
+        }
+    }
+
+    function cloudy() {
+        let curr = document.getElementsByClassName("cloudy-half")[0].style.display;
+        if (curr === "block") {
+            document.getElementsByClassName("cloudy-half")[0].style.display = "none"
+        } else {
+            document.getElementsByClassName("cloudy-half")[0].style.display = "block"
+        }
+    }
+
+    function rainy() {
+        // let curr = document.getElementsByClassName("rainy")[0].style.display;
+        // if (curr === "block") {
+        //     document.getElementsByClassName("rainy")[0].style.display = "none"
+        // } else {
+        //     document.getElementsByClassName("rainy")[0].style.display = "block"
+        // }
+
+        rain()
+    }
+</script>
+</body>
 </html>
