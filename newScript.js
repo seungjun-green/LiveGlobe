@@ -2,17 +2,21 @@ var map;
 var service;
 var infowindow;
 
-
+var currentLat = 62.323907;
+var currentLng= -150.109291;
 
 function initMap() {
     initAutocomplete()
-    const map = new google.maps.Map(document.getElementById("map"), {
+    map = new google.maps.Map(document.getElementById("map"), {
         zoom: 11,
-        center: { lat: 62.323907, lng: -150.109291 },
+        center: {lat: 37.3347002970632, lng: -121.92762683892221},
         mapTypeId: "satellite",
+        disableDefaultUI: true,
+        // scrollwheel: false,
+        disableDoubleClickZoom: true
     });
 
-    updateWeather(map);
+    // updateWeather(map);
 
 }
 
@@ -80,7 +84,14 @@ function onPlaceChanged() {
     if (!place.geometry) {
         document.getElementById('autocomplete').placeholder = 'Enter a valid place';
     } else {
-        document.getElementById('details').innerHTML = place.name;
+        // document.getElementById('details').innerHTML = place.name;
+        // print("dddddddd");
+
+        currentLat = 22.32;
+        currentLng = place.geometry.lng;
+        document.getElementById('result1').innerHTML = place.geometry.location;
+        map.setCenter({lat:0.323907, lng: -150.109291});
+
     }
 }
 
