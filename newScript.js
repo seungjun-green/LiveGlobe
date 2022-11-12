@@ -87,10 +87,19 @@ function onPlaceChanged() {
         // document.getElementById('details').innerHTML = place.name;
         // print("dddddddd");
 
-        currentLat = 22.32;
-        currentLng = place.geometry.lng;
-        document.getElementById('result1').innerHTML = place.geometry.location;
-        map.setCenter({lat:0.323907, lng: -150.109291});
+
+
+        // var nnlat = coords.substring(1, coords.indexOf(","));
+        // var nnlng = coords.substring(coords.indexOf(",") + 1, coords.indexOf(")"));
+        var ddr = JSON.stringify(place.geometry.location);
+
+        document.getElementById('result1').innerHTML = ddr;
+
+        var nnlat = parseFloat(ddr.match(/\d+\.\d+/g)[0]);
+        var nnlng = parseFloat(ddr.match(/\d+\.\d+/g)[1]);
+
+        map.setCenter({lat: nnlat, lng: nnlng});
+
 
     }
 }
