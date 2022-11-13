@@ -2,11 +2,10 @@
     position: absolute;
 }
 
-
 snowDrop {
     position: absolute;
     height: 50px;
-    background: linear-gradient(transparent, cornflowerblue);
+    background: linear-gradient(red, red);
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
     animation: animateSnow 5s linear infinite;

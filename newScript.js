@@ -68,7 +68,7 @@ function updateWeatherAnimation(prevWeather, weather) {
             foggy()
         }
 
-        weather = "snowy"
+        weather = "rainy"
         // create a new weather animation
         if (weather === "sunny") {
             sunny()
@@ -257,6 +257,7 @@ function snowy() {
         }
 
         snowAdded = true;
+
     } else {
         snowAdded = false;
         var el = document.querySelector('.snowW');
