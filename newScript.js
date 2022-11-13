@@ -149,37 +149,50 @@ function sunny() {
 
 // thunder
 var thunderAdded = false;
+
+function kwhang() {
+    let amount = 1;
+    let body = document.querySelector('.lightning')
+    let i = 0;
+
+
+
+
+    let thunder = document.createElement('thunderbolt');
+
+    let size = Math.random() * 5;
+    let posX = Math.floor(Math.random() * window.innerWidth * 0.9);
+    let posY = Math.floor(Math.random() * 350);
+    let delay = Math.random() * -20;
+    let duration = Math.random() * 5;
+
+    thunder.style.width = 0.2 + size+'px';
+
+    thunder.style.left = posX + 'px';
+    thunder.style.top = posY + 'px';
+
+
+    thunder.style.animationDelay = duration+'s';
+    thunder.style.animationDuration = 1 + duration+'s';
+    body.appendChild(thunder);
+
+    setTimeout(pang, 1000);
+}
+
+function pang() {
+    var el = document.querySelector('.lightning');
+    while (el.firstChild) {
+        el.removeChild(el.firstChild);
+    }
+}
+
+
 function thunder() {
     if (thunderAdded === false) {
-        let amount = 5;
-        let body = document.querySelector('.lightning')
-        let i = 0;
-
-        while (i<amount) {
-
-            let thunder = document.createElement('thunderbolt');
-
-            let size = Math.random() * 5;
-            let posX = Math.floor(Math.random() * window.innerWidth);
-            let posY = Math.floor(Math.random() * 400);
-            let delay = Math.random() * -20;
-            let duration = Math.random() * 5;
-
-            thunder.style.width = 0.2 + size+'px';
-
-            thunder.style.left = posX + 'px';
-            thunder.style.top = posY + 'px';
-
-
-            thunder.style.animationDelay = duration+'s';
-            thunder.style.animationDuration = 1 + duration+'s';
-            body.appendChild(thunder);
-            i++;
-
-
-        }
-
         thunderAdded = true;
+        setInterval(kwhang,3000)
+
+
     } else {
         thunderAdded = false;
         var el = document.querySelector('.lightning');
