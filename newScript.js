@@ -8,17 +8,23 @@ var currentLng= -150.109291;
 function initMap() {
     initAutocomplete()
     map = new google.maps.Map(document.getElementById("map"), {
-        zoom: 11,
+        zoom: 12,
+
         center: {lat: 37.3347002970632, lng: -121.92762683892221},
         // mapTypeId: "satellite",
+        maxZoom: 12,
+        minZoom: 12,
         disableDefaultUI: true,
-        // scrollwheel: false,
-        disableDoubleClickZoom: true
+        disableDoubleClickZoom: true,
+
+
+
     });
 
-    // updateWeather(map);
+    updateWeather(map);
 
 }
+
 
 
 function updateWeather(map) {

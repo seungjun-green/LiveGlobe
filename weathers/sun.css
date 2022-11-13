@@ -1,0 +1,9 @@
+.sunny {
+    display: none;
+    width: 150px;
+    height: 150px;
+    background: radial-gradient(yellow, orange);
+    border-radius: 50%;
+    margin: 25px;
+    position: absolute;
+}

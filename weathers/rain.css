@@ -1,0 +1,29 @@
+.rainyW {
+    position: absolute;
+}
+
+
+i {
+    position: absolute;
+    height: 50px;
+    background: linear-gradient(transparent, cornflowerblue);
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    animation: animate 5s linear infinite;
+}
+
+@keyframes animate {
+    0% {
+        transform: translateY(0vh);
+    }
+    75% {
+        transform: translateY(300px);
+    }
+    100% {
+        transform: translateY(350px);
+    }
+}
+
+.rainy {
+    display: block;
+}

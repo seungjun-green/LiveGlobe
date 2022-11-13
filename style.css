@@ -35,147 +35,16 @@
 }
 
 
-.cloud.one {
-    top: 50%;
-    width: 300px;
-    height: 100px;
-}
-
-.cloud.two {
-    top: 30%;
-    width: 60px;
-    height: 20px;
-    animation-duration: 10s;
-}
-
-.cloud.three {
-    top: 20%;
-    width: 120px;
-    height: 40px;
-    animation-duration: 8s;
-}
-
-.cloud {
-    position: absolute;
-    left: 0;
-    background: white;
-    border-radius: 1000px;
-    animation: zoomies 5s infinite linear;
-}
-
-.cloud::before {
-    content: "";
-    position: absolute;
-    top: -80%;
-    left: 10%;
-    width: 50%;
-    height: 150%;
-    background: white;
-    border-radius: 50%;
-}
-
-.cloud::after {
-    content: "";
-    position: absolute;
-    top: -40%;
-    right: 20%;
-    width: 30%;
-    height: 100%;
-    background: white;
-    border-radius: 50%;
-}
-
-@keyframes zoomies {
-    from {
-        left: 0;
-        transform: translateX(-100%);
-    }
-
-    to {
-        left: 100%;
-        transform: translateX(0%);
-    }
-}
-
-.sunny {
-    display: none;
-    width: 150px;
-    height: 150px;
-    background: radial-gradient(yellow, orange);
-    border-radius: 50%;
-    margin: 25px;
-    position: absolute;
-}
-
-.cloudy-half {
-    display: none;
-}
-
-.rainy {
-    display: block;
-}
-
-i {
-    position: absolute;
-    height: 50px;
-    background: linear-gradient(transparent, cornflowerblue);
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-    animation: animate 5s linear infinite;
-}
-
-@keyframes animate {
-    0% {
-        transform: translateY(0vh);
-    }
-    75% {
-        transform: translateY(300px);
-    }
-    100% {
-        transform: translateY(350px);
-    }
-}
-
-
-thunderbolt  {
-    position: relative;
-    width: 25px;
-    height: 50px;
-    background: yellow;
-    transform: skewX(-30deg);
-}
-
-thunderbolt::before {
-    content: '';
-    position: absolute;
-    top: -50px;
-    left: -20px;
-    border-bottom: 60px solid yellow;
-    border-left: 30px solid transparent;
-}
-
-thunderbolt::after {
-    content: '';
-    position: absolute;
-    bottom: -50px;
-    right: -20px;
-    border-top: 60px solid yellow;
-    border-right: 30px solid transparent;
-}
-
-
  #autocomplete {
     background-color: #fff;
     font-size: 15px;
     font-weight: 300;
-    margin-left: 12px;
     padding: 0 11px 0 13px;
     text-overflow: ellipsis;
     width: 500px;
-     display: inline-block;
+     display: block;
+     margin-bottom: 10px;
+
 }
 
 
- .rainyW {
-     position: absolute;
- }
