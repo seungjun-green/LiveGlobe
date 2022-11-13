@@ -1,18 +1,18 @@
-.rainyW {
+.snowW {
     position: absolute;
 }
 
 
-rainDrop {
+snowDrop {
     position: absolute;
     height: 50px;
     background: linear-gradient(transparent, cornflowerblue);
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
-    animation: animate 5s linear infinite;
+    animation: animateSnow 5s linear infinite;
 }
 
-@keyframes animate {
+@keyframes animateSnow {
     0% {
         transform: translateY(0vh);
     }
@@ -24,6 +24,6 @@ rainDrop {
     }
 }
 
-.rainy {
+.snowy {
     display: block;
 }

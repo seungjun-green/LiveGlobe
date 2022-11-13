@@ -56,6 +56,8 @@ function updateWeatherAnimation(prevWeather, weather) {
         // creating a new
         if (prevWeather === "sunny") {
             sunny()
+        } else if (prevWeather === "cloudy") {
+            cloudy()
         } else if (prevWeather === "rainy") {
             rain()
         } else if (prevWeather === "thunder") {
@@ -66,9 +68,12 @@ function updateWeatherAnimation(prevWeather, weather) {
             foggy()
         }
 
+        weather = "snowy"
         // create a new weather animation
         if (weather === "sunny") {
             sunny()
+        } else if (weather === "cloudy") {
+           cloudy()
         } else if (weather === "rainy") {
             rain()
         } else if (weather === "thunder") {
@@ -196,7 +201,7 @@ function rain() {
         let i = 0;
 
         while (i<amount) {
-            let drop = document.createElement('i');
+            let drop = document.createElement('rainDrop');
 
             let size = Math.random() * 5;
             let posX = Math.floor(Math.random() * window.innerWidth);
@@ -223,8 +228,44 @@ function rain() {
         }
 
     }
+}
 
+//snow
+var snowAdded = false;
+function snowy() {
+    if (snowAdded === false) {
+        let amount = 100;
+        let body = document.querySelector('.snowW')
+        let i = 0;
 
+        while (i<amount) {
+            let drop = document.createElement('rainDrop');
+
+            let size = Math.random() * 5;
+            let posX = Math.floor(Math.random() * window.innerWidth);
+            let delay = Math.random() * -20;
+            let duration = Math.random() * 5;
+
+            drop.style.width = 0.2 + size+'px';
+
+            drop.style.left = posX + 'px';
+
+            drop.style.animationDelay = duration+'s';
+            drop.style.animationDuration = 1 + duration+'s';
+            body.appendChild(drop);
+            i++;
+
+        }
+
+        snowAdded = true;
+    } else {
+        snowAdded = false;
+        var el = document.querySelector('.snowW');
+        while (el.firstChild) {
+            el.removeChild(el.firstChild);
+        }
+
+    }
 }
 
 
@@ -240,9 +281,6 @@ function cloudy() {
 }
 
 //snowy
-function snowy() {
-
-}
 
 
 //foggy
