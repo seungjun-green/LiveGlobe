@@ -1,13 +1,10 @@
 var map;
 
-
-
 function initMap() {
 
     initAutocomplete()
-    map = new google.maps.Map(document.getElementById("map"), {
+    map = new google.maps.Map(document.getElementById('map'), {
         zoom: 12,
-
         center: {lat: 37.3347002970632, lng: -121.92762683892221},
         // mapTypeId: "satellite",
         maxZoom: 12,
@@ -18,9 +15,9 @@ function initMap() {
     });
 
     updateWeather()
-
-
 }
+
+
 var weather;
 function updateWeather() {
     // get current latitude and longitude
@@ -62,13 +59,14 @@ function updateWeatherAnimation(prevWeather, weather) {
             rain()
         } else if (prevWeather === "thunder") {
             thunder()
+            rain()
         } else if (prevWeather === "snowy") {
             snowy()
         } else {
             foggy()
         }
 
-        weather = "snowy"
+        weather = "thunder"
         // create a new weather animation
         if (weather === "sunny") {
             sunny()
@@ -78,6 +76,7 @@ function updateWeatherAnimation(prevWeather, weather) {
             rain()
         } else if (weather === "thunder") {
             thunder()
+            rain()
         } else if (weather === "snowy") {
             snowy()
         } else {
