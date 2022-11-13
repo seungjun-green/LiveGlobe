@@ -44,45 +44,38 @@
 <p id="result1">Hello, World</p>
 <p id="result2">Hello, World</p>
 <p id="weather">Default weather</p>
-<button onclick="snowy2()">snowy</button>
+<button onclick="getWeatherData()">snowy</button>
 <script>
     var snowAdded = false;
-    function snowy2() {
 
-        if (snowAdded === false) {
-            let amount = 50;
-            let body = document.querySelector('.snowW')
-            let i = 0;
 
-            while (i<amount) {
-                let drop = document.createElement('rainDrop');
-
-                let size = Math.random() * 5;
-                let posX = Math.floor(Math.random() * window.innerWidth);
-                let duration = Math.random() * 5;
-
-                drop.style.width = 0.2 + size+'px';
-
-                drop.style.left = posX + 'px';
-
-                drop.style.animationDelay = duration+'s';
-                drop.style.animationDuration = 1 + duration+'s';
-                body.appendChild(drop);
-                i++;
-
-            }
-
-            snowAdded = true;
-
-        } else {
-            snowAdded = false;
-            var el = document.querySelector('.snowW');
-            while (el.firstChild) {
-                el.removeChild(el.firstChild);
-            }
-
+        function getWeatherData() {
+            var lat = 37.3347002970632;
+            var lon = -121.927626
+            var api =
+                "https://api.openweathermap.org/data/2.5/weather?lat=" +
+                lat +
+                "&lon=" +
+                lon +
+                "&appid=5de8417cddf88e7b22bafde91761e12a";
+            var weatherData = fetch(api)
+                .then(function(response) {
+                        return response.json();
+                    }
+                )
+                .then(function(data) {
+                        console.log(data.weather[0].main);
+                        return data;
+                    }
+                )
+                .catch(function(error) {
+                        console.log(error);
+                    }
+                );
+            return weatherData;
         }
-    }
+
+
 </script>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBtrKR4CCcLoUVr2pR--xDKtaB6tvAYHK4&callback=initMap&libraries=places" async defer></script>

@@ -66,12 +66,12 @@ function updateWeatherAnimation(prevWeather, weather) {
             foggy()
         }
 
-        weather = "thunder"
+        weather = "cloudy"
         // create a new weather animation
         if (weather === "sunny") {
             sunny()
         } else if (weather === "cloudy") {
-           cloudy()
+            cloudy()
         } else if (weather === "rainy") {
             rain()
         } else if (weather === "thunder") {
@@ -299,3 +299,5 @@ function cloudy() {
 function foggy() {
 
 }
+
+//https://api.openweathermap.org/data/2.5/weather?lat=37.3347002970632&lon=-121.92762683892221&appid=5de8417cddf88e7b22bafde91761e12a

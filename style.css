@@ -21,19 +21,6 @@
     pointer-events: none;
 }
 
-.dot {
-    pointer-events: none;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    height: 25px;
-    width: 25px;
-    background-color: rgba(225, 0, 0, 1);
-    border-radius: 50%;
-    display: inline-block;
-    z-index: 3;
-}
-
 
 #autocomplete {
     background-color: #fff;
