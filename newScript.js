@@ -21,9 +21,10 @@ function initMap() {
 
 
 }
-
+var weather;
 function updateWeather() {
     // get current latitude and longitude
+    var prevWeather = weather
     var mylat = map.getCenter().lat();
     var mylng = map.getCenter().lng();
 
@@ -32,8 +33,6 @@ function updateWeather() {
 
 
     var testing = true;
-    let weather;
-
     if (testing) {
         // randomly selects weather from ana array
         var weathers = ["sunny", "cloudy", "rainy", "snowy", "thunder"];
@@ -44,20 +43,41 @@ function updateWeather() {
     }
 
     document.getElementById("weather").innerHTML = weather;
-    updateWeatherAnimation(weather)
+
+    // updating weather
+    updateWeatherAnimation(prevWeather,weather)
 }
 
-function updateWeatherAnimation(weather) {
-    if (weather === "sunny") {
-        sunny()
-    } else if (weather === "rainy") {
-        rain()
-    } else if (weather === "thunder") {
-        thunder()
-    } else if (weather === "snowy") {
-        snowy()
+function updateWeatherAnimation(prevWeather, weather) {
+    if (prevWeather === weather) {
+        // do nothing
     } else {
-        foggy()
+        // first delete prev weather animation
+        // creating a new
+        if (prevWeather === "sunny") {
+            sunny()
+        } else if (prevWeather === "rainy") {
+            rain()
+        } else if (prevWeather === "thunder") {
+            thunder()
+        } else if (prevWeather === "snowy") {
+            snowy()
+        } else {
+            foggy()
+        }
+
+        // create a new weather animation
+        if (weather === "sunny") {
+            sunny()
+        } else if (weather === "rainy") {
+            rain()
+        } else if (weather === "thunder") {
+            thunder()
+        } else if (weather === "snowy") {
+            snowy()
+        } else {
+            foggy()
+        }
     }
 }
 
