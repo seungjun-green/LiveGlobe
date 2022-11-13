@@ -68,7 +68,7 @@ function updateWeatherAnimation(prevWeather, weather) {
             foggy()
         }
 
-        // weather = "snowy"
+        weather = "snowy"
         // create a new weather animation
         if (weather === "sunny") {
             sunny()

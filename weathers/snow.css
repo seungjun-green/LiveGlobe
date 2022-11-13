@@ -3,12 +3,13 @@
 }
 
 snowDrop {
+    width: 5px;
+    height: 5px;
+    background-color: #fff;
+    border-radius: 50%;
     position: absolute;
-    height: 50px;
-    background: linear-gradient(red, red);
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-    animation: animateSnow 5s linear infinite;
+    animation: animateSnow2 15s linear infinite;
+    display:block
 }
 
 @keyframes animateSnow {
@@ -23,3 +24,11 @@ snowDrop {
     }
 }
 
+@keyframes animateSnow2 {
+    0% {
+        transform: translateY(0px);
+    }
+    100% {
+        transform: translateY(350px);
+    }
+}
