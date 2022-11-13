@@ -8,6 +8,7 @@
     <link rel="stylesheet" type="text/css" href="weathers/cloud.css"/>
     <link rel="stylesheet" type="text/css" href="weathers/sun.css"/>
     <link rel="stylesheet" type="text/css" href="weathers/thunder.css"/>
+    <link rel="stylesheet" type="text/css" href="weathers/snow.css"/>
     <script type="module" src="newScript.js"></script>
     <script type="module" src="weatherAnimations.js"></script>
 </head>
@@ -43,6 +44,47 @@
 <p id="result1">Hello, World</p>
 <p id="result2">Hello, World</p>
 <p id="weather">Default weather</p>
+<button onclick="snowy2()">snowy</button>
+<script>
+    var snowAdded = false;
+    function snowy2() {
+
+        if (snowAdded === false) {
+            let amount = 50;
+            let body = document.querySelector('.snowW')
+            let i = 0;
+
+            while (i<amount) {
+                let drop = document.createElement('rainDrop');
+
+                let size = Math.random() * 5;
+                let posX = Math.floor(Math.random() * window.innerWidth);
+                let duration = Math.random() * 5;
+
+                drop.style.width = 0.2 + size+'px';
+
+                drop.style.left = posX + 'px';
+
+                drop.style.animationDelay = duration+'s';
+                drop.style.animationDuration = 1 + duration+'s';
+                body.appendChild(drop);
+                i++;
+
+            }
+
+            snowAdded = true;
+
+        } else {
+            snowAdded = false;
+            var el = document.querySelector('.snowW');
+            while (el.firstChild) {
+                el.removeChild(el.firstChild);
+            }
+
+        }
+    }
+</script>
+
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBtrKR4CCcLoUVr2pR--xDKtaB6tvAYHK4&callback=initMap&libraries=places" async defer></script>
 
 </body>
