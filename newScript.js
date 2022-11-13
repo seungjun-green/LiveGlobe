@@ -6,6 +6,7 @@ var currentLat = 62.323907;
 var currentLng= -150.109291;
 
 function initMap() {
+
     initAutocomplete()
     map = new google.maps.Map(document.getElementById("map"), {
         zoom: 12,
@@ -17,40 +18,35 @@ function initMap() {
         disableDefaultUI: true,
         disableDoubleClickZoom: true,
 
-
-
     });
 
-    updateWeather(map);
+    updateWeather()
 
 }
 
+function updateWeather() {
+    // get current latitude and longitude
+    var mylat = map.getCenter().lat();
+    var mylng = map.getCenter().lng();
+
+    document.getElementById("result1").innerHTML = mylat;
+    document.getElementById("result2").innerHTML = mylng;
 
 
-function updateWeather(map) {
-    map.addListener("center_changed", () => {
-        // get current latitude and longitude
-        var mylat = map.getCenter().lat();
-        var mylng = map.getCenter().lng();
+    var testing = true;
+    let weather;
 
-        document.getElementById("result1").innerHTML = mylat;
-        document.getElementById("result2").innerHTML = mylng;
+    if (testing) {
+        // randomly selects weather from ana array
+        var weathers = ["sunny", "cloudy", "rainy", "snowy"];
+        weather = weathers[Math.floor(Math.random() * weathers.length)];
+    } else {
+        // get weather data from api
+        weather = "sunny";
+    }
 
-        //pass current lat/lng to wetaher api and get weather data
-        var testing = true;
-        var weather;
-        if (testing) {
-            // randomly selects weather from ana array
-            var weathers = ["sunny", "cloudy", "rainy", "snowy"];
-            var weather = weathers[Math.floor(Math.random() * weathers.length)];
-        } else {
-            // get weather data from api
-            var weather = "sunny";
-        }
-
-        document.getElementById("weather").innerHTML = weather;
-        updateWeatherAnimation()
-    });
+    document.getElementById("weather").innerHTML = weather;
+    updateWeatherAnimation()
 }
 
 
@@ -90,17 +86,9 @@ function onPlaceChanged() {
     if (!place.geometry) {
         document.getElementById('autocomplete').placeholder = 'Enter a valid place';
     } else {
-        // document.getElementById('details').innerHTML = place.name;
-        // print("dddddddd");
-
-
-
-        // var nnlat = coords.substring(1, coords.indexOf(","));
-        // var nnlng = coords.substring(coords.indexOf(",") + 1, coords.indexOf(")"));
+        // move the center of the map to new spot
         var ddr = JSON.stringify(place.geometry.location);
 
-        // document.getElementById('result1').innerHTML = parseFloat(ddr.match('-?\\d+\\.\\d+')[0]);
-        // document.getElementById('result2').innerHTML = parseFloat(ddr.match('-?\\d+\\.\\d+')[1]);
         var nnlat = parseFloat(ddr.match('-?\\d+\\.?\\d+')[0]);
         ddr = ddr.replace(nnlat, '');
         var nnlng = parseFloat(ddr.match('-?\\d+\\.?\\d+')[0]);
@@ -110,11 +98,11 @@ function onPlaceChanged() {
 
         map.setCenter({lat: nnlat, lng: nnlng});
 
+        //update weather information
+        updateWeather();
+
 
     }
 }
-
-
-
 
 window.initMap = initMap;
