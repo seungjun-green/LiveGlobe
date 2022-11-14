@@ -31,7 +31,7 @@ function initAutocomplete() {
         document.getElementById('autocomplete'),
         {
             types: ['establishment'],
-            componentRestrictions: {'country': ['US', 'UK']},
+            componentRestrictions: {'country': ['US', 'UK', 'AU']},
             fields: ['place_id', 'geometry', 'name']
         }
     )
@@ -67,6 +67,7 @@ function onPlaceChanged() {
 
 var weatherState;
 var weather;
+var isNight;
 function updateWeather() {
     // get current latitude and longitude
     var prevWeather = weather
@@ -80,7 +81,7 @@ function updateWeather() {
     var testing = false;
     if (testing) {
         // randomly selects weather from ana array
-        var weathers = ["sunny", "cloudy", "rainy", "snowy", "thunder"];
+        var weathers = ["sunny", "cloudy", "rainy", "snowy", "thunder", "foggy"];
         weather = weathers[Math.floor(Math.random() * weathers.length)];
     } else {
         //AHAHAH
@@ -107,10 +108,8 @@ function getWeatherData(lat, lon, prevWeather) {
             }
         )
         .then(function(data) {
-                console.log(data.weather[0].main);
-                console.log(data.timezone);
                 weatherState = data.weather[0].main;
-
+                isNight = nightTime(data.timezone);
             if (weatherState === "Thunderstorm") {
                 weather = 'thunder';
             } else if (weatherState === 'Rain') {
@@ -118,7 +117,13 @@ function getWeatherData(lat, lon, prevWeather) {
             } else if (weatherState === 'Snow') {
                 weather = 'snowy';
             } else if (weatherState === 'Clear') {
-                weather = 'sunny'
+                if (isNight) {
+                    weather = 'moon'
+                } else {
+                    weather = "sunny"
+                }
+
+
             } else if (weatherState === 'Clouds') {
                 weather = 'cloudy'
             } else {
@@ -165,7 +170,7 @@ function updateWeatherAnimation(prevWeather, weather) {
         // create a new weather animation
         if (weather === "sunny") {
             sunny()
-        } else if (prevWeather === "moon") {
+        } else if (weather === "moon") {
             moon()
         } else if (weather === "cloudy") {
             cloudy()
@@ -362,16 +367,13 @@ function foggy() {
         document.getElementsByClassName("foggy")[0].style.display = "block"
     }
 }
-function getTime(m) {
+
+function nightTime(m) {
     var d = new Date();
-    var n = d.getTimezoneOffset();
-    var e = n / 60;
-    var f = e * m;
-    var g = d.getTime() + f;
-    var h = new Date(g);
-    var dd = h.toLocaleString();
-    return dd;
+    d.setUTCMinutes(d.getUTCMinutes() + m);
+    var h = d.getUTCHours();
+    return h < 6 || h > 18;
 }
 
-
+foggy()
 //https://api.openweathermap.org/data/2.5/weather?lat=37.3347002970632&lon=-121.92762683892221&appid=5de8417cddf88e7b22bafde91761e12a

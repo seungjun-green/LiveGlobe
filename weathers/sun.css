@@ -21,6 +21,7 @@
 
 
 .foggy {
+    display: none;
     opacity: 0.7;
     top: 50%;
     position: absolute;
