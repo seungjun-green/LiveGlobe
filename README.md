@@ -8,6 +8,12 @@ Available weather animations are sunny, foggy, cloudy, raining, thunder, and sno
 
 User can search the place using search bar, and the center of the map will be moved to the place user searched.
 
+
+## Important Links
+* [DevPost](https://devpost.com/software/live-globe)
+* [LiveGlob-Website](www.liveglobe.info)
+* [Demo Video](https://www.youtube.com/watch?v=QhUaJwMoWJE&ab_channel=SeungjunLee)
+
 ## What's next for Live Glob
 Create photo realistic style of weather art/animations for when user selected satellite mode.
 
