@@ -77,12 +77,13 @@ function updateWeather() {
     document.getElementById("result2").innerHTML = mylng;
 
 
-    var testing = true;
+    var testing = false;
     if (testing) {
         // randomly selects weather from ana array
         var weathers = ["sunny", "cloudy", "rainy", "snowy", "thunder"];
         weather = weathers[Math.floor(Math.random() * weathers.length)];
     } else {
+        //AHAHAH
         var result = getWeatherData(mylat, mylng, prevWeather);
     }
 
@@ -107,6 +108,7 @@ function getWeatherData(lat, lon, prevWeather) {
         )
         .then(function(data) {
                 console.log(data.weather[0].main);
+                console.log(data.timezone);
                 weatherState = data.weather[0].main;
 
             if (weatherState === "Thunderstorm") {
@@ -117,8 +119,10 @@ function getWeatherData(lat, lon, prevWeather) {
                 weather = 'snowy';
             } else if (weatherState === 'Clear') {
                 weather = 'sunny'
-            } else {
+            } else if (weatherState === 'Clouds') {
                 weather = 'cloudy'
+            } else {
+                weather = 'foggy'
             }
             document.getElementById("weather").innerHTML = weather;
 
@@ -143,6 +147,8 @@ function updateWeatherAnimation(prevWeather, weather) {
         // creating a new
         if (prevWeather === "sunny") {
             sunny()
+        } else if (prevWeather === "moon") {
+            moon()
         } else if (prevWeather === "cloudy") {
             cloudy()
         } else if (prevWeather === "rainy") {
@@ -159,6 +165,8 @@ function updateWeatherAnimation(prevWeather, weather) {
         // create a new weather animation
         if (weather === "sunny") {
             sunny()
+        } else if (prevWeather === "moon") {
+            moon()
         } else if (weather === "cloudy") {
             cloudy()
         } else if (weather === "rainy") {
@@ -336,15 +344,34 @@ function cloudy() {
     }
 }
 
-//snowy
 
-
-//foggy
-function foggy() {
-
+function moon() {
+    let curr = document.getElementsByClassName("moon")[0].style.display;
+    if (curr === "block") {
+        document.getElementsByClassName("moon")[0].style.display = "none"
+    } else {
+        document.getElementsByClassName("moon")[0].style.display = "block"
+    }
 }
 
-
+function foggy() {
+    let curr = document.getElementsByClassName("foggy")[0].style.display;
+    if (curr === "block") {
+        document.getElementsByClassName("foggy")[0].style.display = "none"
+    } else {
+        document.getElementsByClassName("foggy")[0].style.display = "block"
+    }
+}
+function getTime(m) {
+    var d = new Date();
+    var n = d.getTimezoneOffset();
+    var e = n / 60;
+    var f = e * m;
+    var g = d.getTime() + f;
+    var h = new Date(g);
+    var dd = h.toLocaleString();
+    return dd;
+}
 
 
 //https://api.openweathermap.org/data/2.5/weather?lat=37.3347002970632&lon=-121.92762683892221&appid=5de8417cddf88e7b22bafde91761e12a

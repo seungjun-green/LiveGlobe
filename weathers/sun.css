@@ -21,10 +21,11 @@
 
 
 .foggy {
+    opacity: 0.7;
     top: 50%;
     position: absolute;
     left: 0;
-    background: white;
+    background: whitesmoke;
     border-radius: 1000px;
     animation: zoomies 25s infinite linear;
     width: 900px;
@@ -38,7 +39,7 @@
     left: 10%;
     width: 50%;
     height: 150%;
-    background: white;
+    background: whitesmoke;
     border-radius: 50%;
 }
 
@@ -49,6 +50,6 @@
     right: 20%;
     width: 30%;
     height: 100%;
-    background: white;
+    background: whitesmoke;
     border-radius: 50%;
 }
