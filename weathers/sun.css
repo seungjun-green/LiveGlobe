@@ -7,3 +7,48 @@
     margin: 25px;
     position: absolute;
 }
+
+
+.moon {
+    display: none;
+    width: 150px;
+    height: 150px;
+    background: radial-gradient(white, yellow);
+    border-radius: 50%;
+    margin: 25px;
+    position: absolute;
+}
+
+
+.foggy {
+    top: 50%;
+    position: absolute;
+    left: 0;
+    background: white;
+    border-radius: 1000px;
+    animation: zoomies 25s infinite linear;
+    width: 900px;
+    height: 200px;
+}
+
+.foggy::before {
+    content: "";
+    position: absolute;
+    top: -80%;
+    left: 10%;
+    width: 50%;
+    height: 150%;
+    background: white;
+    border-radius: 50%;
+}
+
+.foggy::after {
+    content: "";
+    position: absolute;
+    top: -40%;
+    right: 20%;
+    width: 30%;
+    height: 100%;
+    background: white;
+    border-radius: 50%;
+}

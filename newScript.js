@@ -77,7 +77,7 @@ function updateWeather() {
     document.getElementById("result2").innerHTML = mylng;
 
 
-    var testing = false;
+    var testing = true;
     if (testing) {
         // randomly selects weather from ana array
         var weathers = ["sunny", "cloudy", "rainy", "snowy", "thunder"];

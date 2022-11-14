@@ -21,6 +21,8 @@
     <span class="dot"></span>
 
     <div class="sunny"></div>
+    <div class="moon"></div>
+    <div class="foggy"></div>
 
     <div class="cloudy-half">
         <div class="cloud one"></div>
@@ -44,8 +46,33 @@
 <p id="result1">Hello, World</p>
 <p id="result2">Hello, World</p>
 <p id="weather">Default weather</p>
-<button onclick="getWeatherData()">snowy</button>
 
+<p> Fun Buttons for testing</p>
+
+<button onclick="moon()">moon</button>
+<button onclick="foggy()">foggy</button>
+
+
+<script>
+    function moon() {
+        let curr = document.getElementsByClassName("moon")[0].style.display;
+        if (curr === "block") {
+            document.getElementsByClassName("moon")[0].style.display = "none"
+        } else {
+            document.getElementsByClassName("moon")[0].style.display = "block"
+        }
+    }
+
+    function foggy() {
+        let curr = document.getElementsByClassName("foggy")[0].style.display;
+        if (curr === "block") {
+            document.getElementsByClassName("foggy")[0].style.display = "none"
+        } else {
+            document.getElementsByClassName("foggy")[0].style.display = "block"
+        }
+    }
+
+</script>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBtrKR4CCcLoUVr2pR--xDKtaB6tvAYHK4&callback=initMap&libraries=places" async defer></script>
 
