@@ -81,7 +81,7 @@ function updateWeather() {
     var testing = false;
     if (testing) {
         // randomly selects weather from ana array
-        var weathers = ["sunny", "cloudy", "rainy", "snowy", "thunder", "foggy"];
+        var weathers = ["sunny", "cloudy", "rainy", "snowy", "thunder", "foggy", "moon"];
         weather = weathers[Math.floor(Math.random() * weathers.length)];
     } else {
         //AHAHAH
@@ -247,7 +247,7 @@ function pang() {
 function thunder() {
     if (thunderAdded === false) {
         thunderAdded = true;
-        setInterval(kwhang,3000)
+        refreshIntervalId = setInterval(kwhang,3000)
 
 
     } else {
@@ -256,6 +256,7 @@ function thunder() {
         while (el.firstChild) {
             el.removeChild(el.firstChild);
         }
+        clearInterval(refreshIntervalId);
     }
 
 }
