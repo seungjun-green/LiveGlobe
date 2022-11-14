@@ -11,7 +11,7 @@ User can search the place using search bar, and the center of the map will be mo
 
 ## Important Links
 * [DevPost](https://devpost.com/software/live-globe)
-* [LiveGlob-Website](www.liveglobe.info)
+* [LiveGlobe-Website](https://liveglobe.info/)
 * [Demo Video](https://www.youtube.com/watch?v=QhUaJwMoWJE&ab_channel=SeungjunLee)
 
 ## What's next for Live Glob
