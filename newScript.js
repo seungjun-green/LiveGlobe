@@ -52,8 +52,6 @@ function onPlaceChanged() {
         ddr = ddr.replace(nnlat, '');
         var nnlng = parseFloat(ddr.match('-?\\d+\\.?\\d+')[0]);
 
-        document.getElementById('result1').innerHTML = nnlat;
-        document.getElementById('result2').innerHTML = nnlng;
 
         map.setCenter({lat: nnlat, lng: nnlng});
 
@@ -74,6 +72,7 @@ function updateWeather() {
     var mylat = map.getCenter().lat();
     var mylng = map.getCenter().lng();
 
+
     document.getElementById("result1").innerHTML = mylat;
     document.getElementById("result2").innerHTML = mylng;
 
@@ -88,7 +87,6 @@ function updateWeather() {
         var result = getWeatherData(mylat, mylng, prevWeather);
     }
 
-    document.getElementById("weather").innerHTML = weather;
 
     // updating weather
     updateWeatherAnimation(prevWeather,weather)
@@ -376,5 +374,6 @@ function nightTime(m) {
     return h < 6 || h > 18;
 }
 
-foggy()
+foggy();
+
 //https://api.openweathermap.org/data/2.5/weather?lat=37.3347002970632&lon=-121.92762683892221&appid=5de8417cddf88e7b22bafde91761e12a
