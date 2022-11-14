@@ -59,41 +59,10 @@
 <button onclick="moon()">moon</button>
 <button onclick="foggy()">foggy</button>
 
-
+<button onclick="clearAllOut()">ccc</button>
 <script>
 
-    function clearAllOut() {
-        // clear sun
-        document.getElementsByClassName("sunny")[0].style.display = "none"
 
-        // clear thunder
-        var el = document.querySelector('.lightning');
-        while (el.firstChild) {
-            el.removeChild(el.firstChild);
-        }
-
-        // clear snow
-        var el2 = document.querySelector('.rainyW');
-        while (el2.firstChild) {
-            el2.removeChild(el2.firstChild);
-        }
-
-        // clear snow
-        snowAdded = false;
-        var el3 = document.querySelector('.snowW');
-        while (el3.firstChild) {
-            el3.removeChild(el.firstChild);
-        }
-
-        // clear cloud
-        document.getElementsByClassName("cloudy-half")[0].style.display = "none"
-
-        // clear moon
-        document.getElementsByClassName("moon")[0].style.display = "none"
-
-        // clear fog
-        document.getElementsByClassName("foggy")[0].style.display = "none"
-    }
 
     function ddr() {
         thunder()
