@@ -108,6 +108,7 @@ function getWeatherData(lat, lon, prevWeather) {
         .then(function(data) {
                 weatherState = data.weather[0].main;
                 isNight = nightTime(data.timezone);
+                console.log(isNight)
             if (weatherState === "Thunderstorm") {
                 weather = 'thunder';
             } else if (weatherState === 'Rain') {
@@ -369,7 +370,7 @@ function foggy() {
 
 function nightTime(m) {
     var d = new Date();
-    d.setUTCMinutes(d.getUTCMinutes() + m);
+    d.setUTCSeconds(d.getUTCSeconds() + m);
     var h = d.getUTCHours();
     return h < 6 || h > 18;
 }

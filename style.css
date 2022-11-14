@@ -3,7 +3,7 @@
     width: 100%;
     z-index: 1;
 }
-
+body { overflow: hidden; }
 #overlay {
     position: fixed;
     display: block;
