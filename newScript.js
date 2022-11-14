@@ -17,74 +17,6 @@ function initMap() {
     updateWeather()
 }
 
-
-var weather;
-function updateWeather() {
-    // get current latitude and longitude
-    var prevWeather = weather
-    var mylat = map.getCenter().lat();
-    var mylng = map.getCenter().lng();
-
-    document.getElementById("result1").innerHTML = mylat;
-    document.getElementById("result2").innerHTML = mylng;
-
-
-    var testing = true;
-    if (testing) {
-        // randomly selects weather from ana array
-        var weathers = ["sunny", "cloudy", "rainy", "snowy", "thunder"];
-        weather = weathers[Math.floor(Math.random() * weathers.length)];
-    } else {
-        // get weather data from api
-        weather = "sunny";
-    }
-
-    document.getElementById("weather").innerHTML = weather;
-
-    // updating weather
-    updateWeatherAnimation(prevWeather,weather)
-}
-
-function updateWeatherAnimation(prevWeather, weather) {
-    if (prevWeather === weather) {
-        // do nothing
-    } else {
-        // first delete prev weather animation
-        // creating a new
-        if (prevWeather === "sunny") {
-            sunny()
-        } else if (prevWeather === "cloudy") {
-            cloudy()
-        } else if (prevWeather === "rainy") {
-            rain()
-        } else if (prevWeather === "thunder") {
-            thunder()
-            rain()
-        } else if (prevWeather === "snowy") {
-            snowy()
-        } else {
-            foggy()
-        }
-
-        weather = "cloudy"
-        // create a new weather animation
-        if (weather === "sunny") {
-            sunny()
-        } else if (weather === "cloudy") {
-            cloudy()
-        } else if (weather === "rainy") {
-            rain()
-        } else if (weather === "thunder") {
-            thunder()
-            rain()
-        } else if (weather === "snowy") {
-            snowy()
-        } else {
-            foggy()
-        }
-    }
-}
-
 let autocomplete;
 function initAutocomplete() {
 
@@ -99,7 +31,7 @@ function initAutocomplete() {
         document.getElementById('autocomplete'),
         {
             types: ['establishment'],
-            componentRestrictions: {'country': ['US']},
+            componentRestrictions: {'country': ['US', 'UK']},
             fields: ['place_id', 'geometry', 'name']
         }
     )
@@ -131,6 +63,118 @@ function onPlaceChanged() {
 
     }
 }
+
+
+var weatherState;
+var weather;
+function updateWeather() {
+    // get current latitude and longitude
+    var prevWeather = weather
+    var mylat = map.getCenter().lat();
+    var mylng = map.getCenter().lng();
+
+    document.getElementById("result1").innerHTML = mylat;
+    document.getElementById("result2").innerHTML = mylng;
+
+
+    var testing = false;
+    if (testing) {
+        // randomly selects weather from ana array
+        var weathers = ["sunny", "cloudy", "rainy", "snowy", "thunder"];
+        weather = weathers[Math.floor(Math.random() * weathers.length)];
+    } else {
+        var result = getWeatherData(mylat, mylng, prevWeather);
+    }
+
+    document.getElementById("weather").innerHTML = weather;
+
+    // updating weather
+    updateWeatherAnimation(prevWeather,weather)
+}
+
+
+function getWeatherData(lat, lon, prevWeather) {
+    var api =
+        "https://api.openweathermap.org/data/2.5/weather?lat=" +
+        lat +
+        "&lon=" +
+        lon +
+        "&appid=5de8417cddf88e7b22bafde91761e12a";
+    var weatherData = fetch(api)
+        .then(function(response) {
+                return response.json();
+            }
+        )
+        .then(function(data) {
+                console.log(data.weather[0].main);
+                weatherState = data.weather[0].main;
+
+            if (weatherState === "Thunderstorm") {
+                weather = 'thunder';
+            } else if (weatherState === 'Rain') {
+                weather = 'rainy';
+            } else if (weatherState === 'Snow') {
+                weather = 'snowy';
+            } else if (weatherState === 'Clear') {
+                weather = 'sunny'
+            } else {
+                weather = 'cloudy'
+            }
+            document.getElementById("weather").innerHTML = weather;
+
+            // updating weather
+            updateWeatherAnimation(prevWeather,weather)
+
+                return data.weather[0].main;
+            }
+        )
+        .catch(function(error) {
+                console.log(error);
+            }
+        );
+    return weatherData;
+}
+
+function updateWeatherAnimation(prevWeather, weather) {
+    if (prevWeather === weather) {
+        // do nothing
+    } else {
+        // first delete prev weather animation
+        // creating a new
+        if (prevWeather === "sunny") {
+            sunny()
+        } else if (prevWeather === "cloudy") {
+            cloudy()
+        } else if (prevWeather === "rainy") {
+            rain()
+        } else if (prevWeather === "thunder") {
+            thunder()
+            rain()
+        } else if (prevWeather === "snowy") {
+            snowy()
+        } else {
+            foggy()
+        }
+
+        // create a new weather animation
+        if (weather === "sunny") {
+            sunny()
+        } else if (weather === "cloudy") {
+            cloudy()
+        } else if (weather === "rainy") {
+            rain()
+        } else if (weather === "thunder") {
+            thunder()
+            rain()
+        } else if (weather === "snowy") {
+            snowy()
+        } else {
+            foggy()
+        }
+    }
+}
+
+
 
 window.initMap = initMap;
 
@@ -299,5 +343,8 @@ function cloudy() {
 function foggy() {
 
 }
+
+
+
 
 //https://api.openweathermap.org/data/2.5/weather?lat=37.3347002970632&lon=-121.92762683892221&appid=5de8417cddf88e7b22bafde91761e12a
